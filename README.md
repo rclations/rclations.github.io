@@ -24,3 +24,4 @@ The live site is available at: https://rclations.github.io/
 - Pages are stored in the `content/` directory
 - Site configuration is in `hugo.toml`
 - Author information is in `data/author.json`
+ 
