@@ -1,0 +1,10 @@
+/* Custom styles for rclations.github.io */
+
+/* Remove underline on hover for the site title in sidebar */
+.sidebar-about h1 a {
+  text-decoration: none;
+}
+
+.sidebar-about h1 a:hover {
+  text-decoration: none;
+}

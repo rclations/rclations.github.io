@@ -1,0 +1,34 @@
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <img src="/images/rc.jpg" alt="RC Lachance" style="display: inline-block; width: 80%; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.2);">
+      </div>
+      <a href="{{ .Site.BaseURL }}" style="text-decoration: none;"><h1>{{ .Site.Title }}</h1></a>
+      <p class="lead">
+      {{ with .Site.Params.description }} {{.}} {{ else }}An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.{{end}}
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="{{ .Site.BaseURL }}">Home</a> </li>
+        <li><a href="/cv/">CV</a></li>
+        {{ range .Site.Menus.main }}
+          <li><a href="{{.URL}}"> {{ .Name }} </a></li>
+        {{end}}
+      </ul>
+    </nav>
+    
+    <div class="social-icons" style="margin-top: 2rem;">
+      <a href="https://github.com/rclations" target="_blank" style="color: white; margin-right: 1rem; text-decoration: none;">
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/rclachance/" target="_blank" style="color: white; text-decoration: none;">
+        <i class="fab fa-linkedin fa-lg"></i>
+      </a>
+    </div>
+
+    <p style="font-size: 0.6rem; margin-top: 2rem; opacity: 0.7;">{{ with .Site.Params.copyright }}{{.}}{{ else }}&copy; {{ now.Format "2006"}}. All rights reserved. {{end}}</p>
+  </div>
+</div>

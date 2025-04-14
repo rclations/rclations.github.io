@@ -1,0 +1,10 @@
+/* Custom styles to override theme defaults */
+
+/* Remove underline from site title in sidebar, including on hover */
+.sidebar-about h1 a {
+  text-decoration: none !important;
+}
+
+.sidebar-about h1 a:hover {
+  text-decoration: none !important;
+}

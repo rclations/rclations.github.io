@@ -1,0 +1,11 @@
+baseURL = 'https://rclations.github.io/'
+languageCode = 'en-us'
+title = 'RC Lachance'
+theme = 'hyde'
+
+[params]
+  description = "ML & Safety Engineering"
+  themeColor = "theme-base-08"
+  layoutReverse = false
+  disqusShortname = ""
+  googleAnalytics = ""

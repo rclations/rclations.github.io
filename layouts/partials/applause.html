@@ -1,0 +1,90 @@
+<!-- Heart Like Button -->
+<style>
+  .heart-container {
+    margin: 2rem 0;
+    text-align: left;
+  }
+  
+  .heart-button {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.5rem 0.8rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .heart-button:hover {
+    transform: scale(1.05);
+    border-color: #084d6f;
+  }
+  
+  .heart-icon {
+    color: #084d6f;
+  }
+  
+  .heart-icon.liked {
+    color: #e25555;
+  }
+  
+  .heart-count {
+    font-size: 0.9rem;
+    color: #777;
+    display: none; /* Hide by default */
+    margin-left: 0.5rem;
+  }
+  
+  .heart-count.visible {
+    display: inline; /* Show when has likes */
+  }
+</style>
+
+<div class="heart-container">
+  <button id="heart-{{ .File.UniqueID }}" class="heart-button" aria-label="Like this post">
+    <i class="fas fa-heart heart-icon"></i>
+    <span class="heart-count">0</span>
+  </button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const heartButton = document.getElementById('heart-{{ .File.UniqueID }}');
+    const heartIcon = heartButton.querySelector('.heart-icon');
+    const heartCount = heartButton.querySelector('.heart-count');
+    
+    // Get post URL for storage key
+    const postUrl = '{{ .Permalink }}';
+    const storageKey = 'heart_' + postUrl;
+    
+    // Check if user has already liked this post
+    const liked = localStorage.getItem(storageKey) === 'true';
+    if (liked) {
+      heartIcon.classList.add('liked');
+    }
+    
+    // Get like count from localStorage or default to 0
+    let count = parseInt(localStorage.getItem(storageKey + '_count') || '0');
+    heartCount.textContent = count;
+    
+    // Only show count if greater than 0
+    if (count > 0) {
+      heartCount.classList.add('visible');
+    }
+    
+    heartButton.addEventListener('click', function() {
+      if (!liked) {
+        // Increment count and save to localStorage
+        count++;
+        heartCount.textContent = count;
+        localStorage.setItem(storageKey, 'true');
+        localStorage.setItem(storageKey + '_count', count.toString());
+        heartIcon.classList.add('liked');
+        
+        // Show count when it becomes greater than 0
+        heartCount.classList.add('visible');
+      }
+    });
+  });
+</script>
